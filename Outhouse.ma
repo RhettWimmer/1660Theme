@@ -1,6 +1,6 @@
 //Maya ASCII 2018ff07 scene
 //Name: Outhouse.ma
-//Last modified: Fri, Mar 30, 2018 06:19:40 PM
+//Last modified: Fri, Mar 30, 2018 06:22:15 PM
 //Codeset: 1252
 requires maya "2018ff07";
 requires -nodeType "polyGear" "modelingToolkit" "0.0.0.0";
@@ -15,13 +15,13 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "E3BB6CB2-4D42-ABB4-AD7E-43B7B4B87A6F";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 1.3100523770966996 7.9766170691524234 11.3363993897804 ;
-	setAttr ".r" -type "double3" -28.538276899900534 6.0001815019409142 0.00068555224581308026 ;
+	setAttr ".t" -type "double3" 1.4293938496113789 6.4730892881580946 24.484670416250996 ;
+	setAttr ".r" -type "double3" -11.738310441230137 3.2001815021274802 0.00068286134869901952 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "DAAB6983-4F66-21EC-B4AF-9EBB3964A3A7";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 14.327597346495132;
+	setAttr ".coi" 26.255245436837448;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -4646,6 +4646,31 @@ createNode polyExtrudeFace -n "polyExtrudeFace32";
 	setAttr ".c[0]"  0 1 1;
 	setAttr ".cbn" -type "double3" -1.7329771230132665 -0.0019318147876299374 1.7329771230132665 ;
 	setAttr ".cbx" -type "double3" 1.4552339546195845 0.29226899906125337 1.7329771230132665 ;
+createNode polySplitRing -n "polySplitRing28";
+	rename -uid "E72FEC8E-4E23-7713-BBA3-299251A7EA64";
+	setAttr ".uopa" yes;
+	setAttr ".ics" -type "componentList" 23 "e[26:27]" "e[29]" "e[39]" "e[61]" "e[63]" "e[65]" "e[67]" "e[77]" "e[80]" "e[168]" "e[178]" "e[205]" "e[215]" "e[345]" "e[355]" "e[797]" "e[807]" "e[880]" "e[890]" "e[1288]" "e[1298]" "e[1332]" "e[1342]";
+	setAttr ".ix" -type "matrix" 3.4659542460265329 0 0 0 0 0.46426996701899093 0 0 0 0 3.4659542460265329 0
+		 0 0.23020316872186553 0 1;
+	setAttr ".wt" 0.93221312761306763;
+	setAttr ".dr" no;
+	setAttr ".re" 890;
+	setAttr ".sma" 29.999999999999996;
+	setAttr ".div" 1;
+	setAttr ".p[0]"  0 0 1;
+	setAttr ".fq" yes;
+createNode polyExtrudeFace -n "polyExtrudeFace33";
+	rename -uid "B7D7D9B4-4245-DEA9-ACBD-EEB6B53EE861";
+	setAttr ".ics" -type "componentList" 2 "f[736]" "f[753:759]";
+	setAttr ".ix" -type "matrix" 3.4659542460265329 0 0 0 0 0.46426996701899093 0 0 0 0 3.4659542460265329 0
+		 0 0.23020316872186553 0 1;
+	setAttr ".ws" yes;
+	setAttr ".pvt" -type "float3" -0.0035205518 2.0150495 0.093915813 ;
+	setAttr ".rs" 47744;
+	setAttr ".lt" -type "double3" 0 2.290054852896202e-16 0.073661749162828374 ;
+	setAttr ".c[0]"  0 1 1;
+	setAttr ".cbn" -type "double3" -1.4622750583740647 1.9546100754246925 0.093915799491373991 ;
+	setAttr ".cbx" -type "double3" 1.4552339546195845 2.0754889548748512 0.093915831770588307 ;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -4680,7 +4705,7 @@ select -ne :hardwareRenderGlobals;
 	setAttr ".btrs" 512;
 select -ne :ikSystem;
 	setAttr -s 4 ".sol";
-connectAttr "polyExtrudeFace32.out" "pCubeShape1.i";
+connectAttr "polyExtrudeFace33.out" "pCubeShape1.i";
 connectAttr "groupParts1.og" "pCubeShape2.i";
 connectAttr "groupId1.id" "pCubeShape2.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "pCubeShape2.iog.og[0].gco";
@@ -4848,6 +4873,10 @@ connectAttr "pCubeShape1.wm" "polyExtrudeFace31.mp";
 connectAttr "polySplitRing27.out" "polyTweak16.ip";
 connectAttr "polyExtrudeFace31.out" "polyExtrudeFace32.ip";
 connectAttr "pCubeShape1.wm" "polyExtrudeFace32.mp";
+connectAttr "polyExtrudeFace32.out" "polySplitRing28.ip";
+connectAttr "pCubeShape1.wm" "polySplitRing28.mp";
+connectAttr "polySplitRing28.out" "polyExtrudeFace33.ip";
+connectAttr "pCubeShape1.wm" "polyExtrudeFace33.mp";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "pCubeShape1.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "pGearShape3.iog" ":initialShadingGroup.dsm" -na;
